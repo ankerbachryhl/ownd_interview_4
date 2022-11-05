@@ -9,14 +9,14 @@ export default function Home() {
   const handleSearch = async (value) => {
     if (value.length > 3) {
 
-      const res = await axios.get(`https://api.reservoir.tools/search/collections/v1?name=${value}`, {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API}?name=${value}`, {
         headers: {
-          "x-api-key": "demo-api-key"
+          [process.env.NEXT_PUBLIC_HEADER_KEY]: process.env.NEXT_PUBLIC_HEADER_VALUE
         }
       })
       setNFTS(res.data.collections)
     }
-    else{
+    else {
       setNFTS([])
     }
   }
@@ -32,8 +32,8 @@ export default function Home() {
       <main className={styles.main}>
         <input type="search" id='myInput' placeholder="Search" onChange={(e) => handleSearch(e.target.value)} />
         {nfts.length > 0 &&
-          <ul id="myUL">
-            {nfts.map((i) => <li><a href={i.image} target="_blank">{i.name}</a></li>)}
+          <ul id="myUL" >
+            {nfts.map((i) => <li key={i.collectionId}><a href={i.image} target="_blank">{i.name}</a></li>)}
           </ul>
         }
       </main >
