@@ -27,7 +27,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <input type="search" className='myInput' placeholder="Search" onChange={(e) => handleSearch(e.target.value)} />
+        <input type="search" id='myInput' placeholder="Search" onChange={(e) => handleSearch(e.target.value)} />
         {nfts.length > 0 &&
           <ul id="myUL">
             {nfts.map((i) => <li><a href={i.image} target="_blank">{i.name}</a></li>)}
