@@ -8,7 +8,6 @@ export default function Home() {
 
   const handleSearch = async (value) => {
     if (value.length > 3) {
-
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API}?name=${value}`, {
         headers: {
           [process.env.NEXT_PUBLIC_HEADER_KEY]: process.env.NEXT_PUBLIC_HEADER_VALUE
@@ -36,7 +35,7 @@ export default function Home() {
             {nfts.map((i) => <li key={i.collectionId}><a href={i.image} target="_blank">{i.name}</a></li>)}
           </ul>
         }
-      </main >
+      </main>
     </div >
   )
 }
