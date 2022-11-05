@@ -16,6 +16,9 @@ export default function Home() {
       })
       setNFTS(res.data.collections)
     }
+    else{
+      setNFTS([])
+    }
   }
 
   return (
